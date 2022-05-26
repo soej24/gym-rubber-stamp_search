@@ -1,0 +1,11 @@
+국민연령별추천운동정보(202201) - KS_MRFN_AGE_ACCTO_RECOMMEND_SPORTS_INFO_202201
+지역별 체력통계 데이터 - KS_NFA_FTNESS_STATS_INFO_AREA_202201
+체육생활 이용정보 - KS_PHSTRN_LVLH_USE_INFO_202201
+
+
+국내 체육 도장 정보
+
+사업장명, 소재지전화, 소재지전체주소, 좌표정보(x), 좌표정보(y)
+
+
+국내 체육 도장 인구 정보
