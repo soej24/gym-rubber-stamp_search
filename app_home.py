@@ -6,7 +6,7 @@ from PIL import Image
 
 def run_home() :
     st.title('우리집에서 가까운 체육관 찾기')
-    image = Image.open('data/img05.jpg')
+    image = Image.open('data/sub_main_img.jpg')
     st.image(image, width=None, use_column_width=True)  
     st.markdown("***")
     
@@ -44,6 +44,7 @@ def run_home() :
     st.markdown("***")
     st.title('지도 들어갈 부분')
 
-    df_map = pd.DataFrame(
-    np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
-    columns=['lat', 'lon'])
+   # df_map = pd.DataFrame(
+   # np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],
+   # columns=['lat', 'lon'])
+  #  st.map(df)
