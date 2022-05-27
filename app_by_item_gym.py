@@ -12,28 +12,32 @@ def run_by_item_gym() :
     df = pd.read_csv('data/gym_list_ch.csv')
     #st.dataframe(df)
 
-    column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥복싱', '복싱', '택견', '검도', '마샬아츠', '트릭킹']
+    column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥복싱', '복싱', '택견', '검도', '마샬아츠', '트릭킹', '멀티']
     choice_list = st.selectbox('운동 종목을 선택하세요!', column_list, index=0)
 
     if choice_list == column_list[0] :
         st.dataframe(df[ df['사업장명'].str.contains('태권도')], height=500)
     elif choice_list == column_list[1]:
-        st.dataframe(df[ df['사업장명'].str.contains('합기도')])
+        st.dataframe(df[ df['사업장명'].str.contains('합기도')], height=500)
     elif choice_list == column_list[2]:
-        st.dataframe(df[ df['사업장명'].str.contains('주짓수')])
+        st.dataframe(df[ df['사업장명'].str.contains('주짓수')], height=500)
     elif choice_list == column_list[3]:
-        st.dataframe(df[ df['사업장명'].str.contains('유도')])
+        st.dataframe(df[ df['사업장명'].str.contains('유도')], height=500)
     elif choice_list == column_list[4]:
-        st.dataframe(df[ df['사업장명'].str.contains('공수도')])     
+        st.dataframe(df[ df['사업장명'].str.contains('공수도')], height=500)     
     elif choice_list == column_list[5]:
-        st.dataframe(df[ df['사업장명'].str.contains('킥복싱')])
+        st.dataframe(df[ df['사업장명'].str.contains('킥복싱')], height=500)
     elif choice_list == column_list[6]:
-        st.dataframe(df[ df['사업장명'].str.contains('복싱')])
+        st.dataframe(df[ df['사업장명'].str.contains('복싱')], height=500)
     elif choice_list == column_list[7]:
-        st.dataframe(df[ df['사업장명'].str.contains('택견')])   
+        st.dataframe(df[ df['사업장명'].str.contains('택견')], height=500)   
     elif choice_list == column_list[8]:
-        st.dataframe(df[ df['사업장명'].str.contains('검도')])               
+        st.dataframe(df[ df['사업장명'].str.contains('검도')], height=500)               
     elif choice_list == column_list[9]:
-        st.dataframe(df[ df['사업장명'].str.contains('마샬아츠')])
+        st.dataframe(df[ df['사업장명'].str.contains('마샬아츠')], height=500)
     elif choice_list == column_list[10]:
-        st.dataframe(df[ df['사업장명'].str.contains('트릭킹')])
+        st.dataframe(df[ df['사업장명'].str.contains('트릭킹')], height=500)
+    elif choice_list == column_list[11] :
+        st.dataframe(df[ ~df['사업장명'].str.contains('태권도') & ~df['사업장명'].str.contains('합기도') & ~df['사업장명'].str.contains('주짓수') & \
+    ~df['사업장명'].str.contains('복싱') & ~df['사업장명'].str.contains('택견') & ~df['사업장명'].str.contains('검도') & \
+    ~df['사업장명'].str.contains('마샬아츠') & ~df['사업장명'].str.contains('택견')], height=500)
