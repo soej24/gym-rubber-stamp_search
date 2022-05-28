@@ -5,7 +5,8 @@ from PIL import Image
 
 def run_exercise_recommendationt() :
     st.title('연령별 운동 추천')
-    # st.markdown("***") #라인줄
+
+    st.markdown("***")
     image = Image.open('data/sub_main04_img.jpg')
     st.image(image, width=None, use_column_width=True)  
     st.markdown("***")
