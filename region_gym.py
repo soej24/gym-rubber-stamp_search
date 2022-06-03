@@ -42,7 +42,7 @@ def run_region_gym() :
 
     # 첫번째 방법
     if status == my_order[0] :        
-        st.dataframe(df.sort_values('소재지전체주소'))
+        st.table(df.sort_values('소재지전체주소'))
     elif status == my_order[1] :
         st.dataframe(df.sort_values('소재지전체주소'))
     elif status == my_order[2] :
