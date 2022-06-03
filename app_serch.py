@@ -12,6 +12,7 @@ def run_serch() :
     st.image(image, width=None, use_column_width=True)  
 
     st.markdown("***")
+
     df = pd.read_csv('data/gym_list_ch.csv')
     # st.dataframe(df)
     df_map = pd.read_csv('data/map02.csv', encoding='UTF-8')

@@ -16,7 +16,9 @@ from region_gym import run_region_gym
 st.set_page_config(layout="wide")
 sp1,con1,sp2=st.columns([0.2,1.2,0.2])
 sp1,con2,con3,sp2 = st.columns([0.2,0.6,0.6,0.2])
-sp,con4,sp2 = st.columns([0.2,1.2,0.2])
+sp1,con4,sp2 = st.columns([0.2,1.2,0.2])
+sp1,con5,con6,sp2 = st.columns([0.2,0.6,0.6,0.2])
+sp1,con7,sp2 = st.columns([0.2,1.2,0.2])
 
 
 
@@ -46,10 +48,7 @@ def main() :
             st.image(image, width=None, use_column_width=True)  
 
             st.markdown("***")
-
-            with sp1 :
-                st.empty()
-            
+          
             with con2 :
 
                 df = pd.read_csv('data/gym_list_ch.csv')
@@ -103,12 +102,6 @@ def main() :
                             new_df_map = df_map[ (df_map['시도'] == choice_list) & (df_map['시군구'] == addr_2) & (df_map['읍면동'] == addr_3) ]
                             st.map(new_df_map)
 
-            with sp2 :
-                st.empty()
-
-
-            # run_serch()
-
         elif choice == menu[2] :
             run_region_gym()        
 
@@ -121,53 +114,35 @@ def main() :
             st.image(image, width=None, use_column_width=True) 
             st.markdown("***")           
 
-            with sp1:
-                st.empty() 
-
-            with con1 :
+            df = pd.read_csv('data/gym_use.csv',  encoding='UTF-8')                
+            
+            with con5 :
                 st.markdown("""
                                 <style>
                                 .css-1d391kg {
-                                 padding-top: 3.5rem;
+                                    padding-top: 3.5rem;
                                 padding-right: 1rem;
                                 padding-bottom: 3.5rem;
                                 padding-left: 1rem;}
                                 </style>
                                 """, unsafe_allow_html=True)         
-                st.subheader('┏ 전체 참여 리스트 ┓') 
-                df = pd.read_csv('data/gym_use.csv',  encoding='UTF-8')
-                st.dataframe(df)
 
-                st.markdown("***")      
-                df_chart = df['시도명'].value_counts()
-
-                st.line_chart(df_chart)
-
-                fig1 =  px.pie(df, names='시도명', values='인구수', title='파이차트')
-                st.plotly_chart(fig1)
-
-                #plotly 의 bar 차트
-                df_sorted = df.sort_values('인구수', ascending=False)
-                fig2 = px.bar(df, x='인구수', y='시도명')
-                st.plotly_chart(fig2)
-
-
-            with con2 :
-                st.markdown("""
-                                <style>
-                                .css-1d391kg {
-                                 padding-top: 3.5rem;
-                                padding-right: 1rem;
-                                padding-bottom: 3.5rem;
-                                padding-left: 1rem;}
-                                </style>
-                                """, unsafe_allow_html=True)                      
+                    
                 st.subheader('┏ 지역별 참여 리스트 ┓')
                 df_groupby = df.groupby('시도명')['인구수'].count().sort_values(ascending = False)
                 st.table(df_groupby)
 
-            with sp2:
-                st.empty() 
+            with con6 :
+
+                st.subheader('┏ 파이 차트 보기 ┓')
+                fig1 =  px.pie(df, names='시도명', values='인구수')
+                st.plotly_chart(fig1)
+
+
+            with con7 :     
+
+                df_chart = df['시도명'].value_counts()
+                st.line_chart(df_chart)
 
         elif choice == menu[4] :
             run_exercise_recommendationt()
