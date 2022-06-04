@@ -17,8 +17,7 @@ st.set_page_config(layout="wide")
 sp1,con1,sp2=st.columns([0.2,1.2,0.2])
 sp1,con2,con3,sp2 = st.columns([0.2,0.6,0.6,0.2])
 sp1,con4,sp2 = st.columns([0.2,1.2,0.2])
-sp1,con5,con6,sp2 = st.columns([0.2,0.6,0.6,0.2])
-sp1,con7,sp2 = st.columns([0.2,1.2,0.2])
+sp1,con5,sp2 = st.columns([0.2,1.2,0.2])
 
 
 
@@ -28,19 +27,16 @@ def main() :
         st.empty()
 
     with con1:
-
         image = Image.open('data/logo.png')
         st.sidebar.image(image)  
         
-        menu = ['Home', '체육관 검색','지역별 체육관 현황','지역별 국민의 체육관 참여도','연령별 운동추천']
-        
+        menu = ['Home', '체육관 검색','지역별 체육관 현황','지역별 국민의 체육관 참여도','연령별 운동추천']        
         choice = st.sidebar.selectbox('main_menu', menu)
 
         if choice == menu[0] :
             run_home()
 
         elif choice == menu[1] :
-
             st.title('가까운 곳에서 체육관을 찾아보세요!!')
 
             st.markdown("***")
@@ -50,7 +46,6 @@ def main() :
             st.markdown("***")
           
             with con2 :
-
                 df = pd.read_csv('data/gym_list_ch.csv')
                 # st.dataframe(df)
                 df_map = pd.read_csv('data/map02.csv', encoding='UTF-8')
@@ -64,12 +59,10 @@ def main() :
                 addr_3 = st.text_input('읍면동을 입력하세요! ex)구월동', max_chars=20)
 
             with con3 :
-
                 addr_2 = st.text_input('시/군을 입력하세요! ex)강남구, 창원시 성산구', max_chars=20)
                 choice_list2 = st.selectbox('운동 종목을 선택하세요! (종목이 없는 체육관은 멀티로 분류)', column_list, index=0)
 
             with con4 :
-
                 if st.button('검색') :
                     #st.text(choice_list2)
 
@@ -85,8 +78,7 @@ def main() :
                              ~df['사업장명'].str.contains('택견'))]
                         st.table(df_mlt)
 
-                    else :
-                        
+                    else :                        
                         df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(addr_2)) &\
                                     (df['소재지전체주소'].str.contains(addr_3)) & (df['사업장명'].str.contains(choice_list2))]
                         df = df.reset_index(drop=True)                  
@@ -96,7 +88,6 @@ def main() :
                             st.text('검색된 데이터가 없습니다!!')
                         else : 
                             st.table(df)
-
                             st.markdown("***")
                             # new_df_map = df_map[ (df_map['시도'] == '인천광역시') & (df_map['시군구'] == '남동구') & (df_map['읍면동'] == '구월동') ]
                             new_df_map = df_map[ (df_map['시도'] == choice_list) & (df_map['시군구'] == addr_2) & (df_map['읍면동'] == addr_3) ]
@@ -106,7 +97,6 @@ def main() :
             run_region_gym()        
 
         elif choice == menu[3] :
-
             st.title('지역별 국민의 체육관 참여도')
 
             st.markdown("***")    
@@ -125,21 +115,15 @@ def main() :
                                 padding-bottom: 3.5rem;
                                 padding-left: 1rem;}
                                 </style>
-                                """, unsafe_allow_html=True)         
-
+                                """, unsafe_allow_html=True)       
                     
                 st.subheader('┏ 지역별 참여 리스트 ┓')
                 df_groupby = df.groupby('시도명')['인구수'].count().sort_values(ascending = False)
                 st.table(df_groupby)
 
-            with con6 :
-
-                st.subheader('┏ 파이 차트 보기 ┓')
+                st.subheader('┏ 차트 보기 ┓')
                 fig1 =  px.pie(df, names='시도명', values='인구수')
                 st.plotly_chart(fig1)
-
-
-            with con7 :     
 
                 df_chart = df['시도명'].value_counts()
                 st.line_chart(df_chart)

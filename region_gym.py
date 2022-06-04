@@ -120,32 +120,32 @@ def run_region_gym() :
 
     column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥복싱', '복싱', '택견', '검도', '마샬아츠', '트릭킹','멀티']
     gym_list = st.selectbox('운동 종목을 선택하세요! (종목이 없는 체육관은 멀티로 분류)', column_list, index=0) 
- 
-    st.markdown("***")
-    st.markdown("""
-                <style>
-                .css-1d391kg {
-                    padding-top: 3.5rem;
-                padding-right: 1rem;
-                padding-bottom: 3.5rem;
-                padding-left: 1rem;}
-                </style>
-                """, unsafe_allow_html=True)         
-                        
-    df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) &\
-                (df['소재지전체주소'].str.contains(addr_3)) & (df['사업장명'].str.contains(gym_list))]
+      
+    if st.button('검색') :    
+        st.markdown("***")
+        df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) &\
+                    (df['소재지전체주소'].str.contains(addr_3)) & (df['사업장명'].str.contains(gym_list))]
 
-    st.markdown("""
-                    <style>
-                    .css-1d391kg {
-                        padding-top: 3.5rem;
-                    padding-right: 1rem;
-                    padding-bottom: 3.5rem;
-                    padding-left: 1rem;}
-                    </style>
-                    """, unsafe_allow_html=True)    
+        st.markdown("""
+                        <style>
+                        .css-1d391kg {
+                            padding-top: 3.5rem;
+                        padding-right: 1rem;
+                        padding-bottom: 3.5rem;
+                        padding-left: 1rem;}
+                        </style>
+                        """, unsafe_allow_html=True)    
                     
-    st.dataframe(df)
-    st.markdown("***") 
+        st.dataframe(df)
+        st.markdown("***") 
 
+        df_split = df['소재지전체주소'].str.split()
+        df_split = df_split.str.get(2)
+        df_addr = pd.DataFrame(df_split)
+        st.dataframe(df_addr)
 
+        fig1 =  px.pie(df_addr, names='소재지전체주소')
+        st.plotly_chart(fig1)
+
+        df_chart = df_addr['소재지전체주소'].value_counts()
+        st.line_chart(df_chart)
