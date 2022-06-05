@@ -1,4 +1,3 @@
-from pyrsistent import v
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -8,7 +7,10 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
+# 한글깨짐 방지
+import matplotlib
+matplotlib.rcParams['font.family'] ='Malgun Gothic'
+matplotlib.rcParams['axes.unicode_minus'] =False
 
 def run_region_gym() :
 
@@ -21,6 +23,7 @@ def run_region_gym() :
     st.markdown("***")
 
     df = pd.read_csv('data/gym_list_ch.csv')
+    df_map = pd.read_csv('data/map02.csv', encoding='UTF-8')
     #df.loc[ df.groupby('소재지전체주소')['소재지전체주소'].count().sort_values(ascending = False), ]
 
     # if choice_list == addr_1[] :
@@ -116,36 +119,59 @@ def run_region_gym() :
                   '청주시 청원구', '청주시 흥덕구', '충주시']
         choice_list2 = st.selectbox('시/군을 선택하세요!', addr_2) 
 
-    addr_3 = st.text_input('읍면동을 입력하세요! ex)구월동', max_chars=20)
-
     column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥복싱', '복싱', '택견', '검도', '마샬아츠', '트릭킹','멀티']
     gym_list = st.selectbox('운동 종목을 선택하세요! (종목이 없는 체육관은 멀티로 분류)', column_list, index=0) 
       
-    if st.button('검색') :    
-        st.markdown("***")
-        df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) &\
-                    (df['소재지전체주소'].str.contains(addr_3)) & (df['사업장명'].str.contains(gym_list))]
+    if st.button('검색') :   
 
-        st.markdown("""
-                        <style>
-                        .css-1d391kg {
+        if column_list == '멀티' :
+            df_mlt = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) & \
+            (~df['사업장명'].str.contains('태권도') & ~df['사업장명'].str.contains('합기도') & ~df['사업장명'].str.contains('주짓수') & \
+             ~df['사업장명'].str.contains('복싱') & ~df['사업장명'].str.contains('택견') & ~df['사업장명'].str.contains('검도') & \
+             ~df['사업장명'].str.contains('마샬아츠') & ~df['사업장명'].str.contains('택견'))]
+            st.table(df_mlt)
+        else :
+            st.markdown("***")
+            df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) & (df['사업장명'].str.contains(gym_list))]
+            df = df.reset_index(drop=True)
+            
+            st.markdown("""
+                            <style>
+                            .css-1d391kg {
                             padding-top: 3.5rem;
-                        padding-right: 1rem;
-                        padding-bottom: 3.5rem;
-                        padding-left: 1rem;}
-                        </style>
-                        """, unsafe_allow_html=True)    
-                    
-        st.dataframe(df)
-        st.markdown("***") 
+                            padding-right: 1rem;
+                            padding-bottom: 3.5rem;
+                            padding-left: 1rem;}
+                            </style>
+                            """, unsafe_allow_html=True)   
+            if df.empty :                      
+                st.text('검색된 데이터가 없습니다!!')
+            else :                         
+                st.table(df)
 
-        df_split = df['소재지전체주소'].str.split()
-        df_split = df_split.str.get(2)
-        df_addr = pd.DataFrame(df_split)
-        st.dataframe(df_addr)
+                st.markdown("***")
+                # map
+                df_map = pd.read_csv('data/map02.csv', encoding='UTF-8')                          
+                # new_df_map = df_map[ (df_map['시도'] == '인천광역시') & (df_map['시군구'] == '남동구') & (df_map['읍면동'] == '구월동') ]
+                new_df_map = df_map[ (df_map['시도'] == choice_list) & (df_map['시군구'] == choice_list2) & (df_map['읍면동']) ]
+                st.map(new_df_map)                           
 
-        fig1 =  px.pie(df_addr, names='소재지전체주소')
-        st.plotly_chart(fig1)
+                st.markdown("***")
+                # 주소를 split() 공백으로 분리하여 3번째 동을 리스트로 저장, 데이터프레임으로 만든다.
+                df_split = df['소재지전체주소'].str.split()
+                df_split = df_split.str.get(2)
+                df_addr = pd.DataFrame(df_split)
+                df_addr.columns = ['소재지']
+                # st.dataframe(df_addr)
+ 
+                fig1 =  px.pie(df_addr, names='소재지')
+                st.plotly_chart(fig1)
 
-        df_chart = df_addr['소재지전체주소'].value_counts()
-        st.line_chart(df_chart)
+                st.markdown("***")               
+                fig6 = plt.figure(figsize=(12,3))  
+                sns.countplot(data=df_addr, x='소재지')
+                st.pyplot(fig6)
+
+                st.markdown("***")
+                df_chart = df_addr['소재지'].value_counts()
+                st.line_chart(df_chart)
