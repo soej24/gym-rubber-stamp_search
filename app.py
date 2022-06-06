@@ -6,8 +6,8 @@ import altair as alt
 import plotly.express as px
 import matplotlib.pyplot as plt
 import seaborn as sns
+from app_exercise import run_exercise
 
-from app_exercise_recommendation import run_exercise_recommendationt
 from app_home import run_home
 from app_serch import run_serch
 from region_gym import run_region_gym
@@ -259,7 +259,7 @@ def main() :
                 st.plotly_chart(fig16) 
 
         elif choice == menu[4] :
-            run_exercise_recommendationt()
+            run_exercise()
     with sp2:
         st.empty()
 

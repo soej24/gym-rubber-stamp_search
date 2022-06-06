@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from PIL import Image
 
-def run_exercise_recommendationt() :
+def run_exercise() :
     st.title('연령별 운동 추천')
 
     st.markdown("***")
