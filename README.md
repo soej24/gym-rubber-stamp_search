@@ -1,7 +1,9 @@
 # gym-rubber-stamp_search
 
-## 🙌 안녕하세요. EASYME.md를 만든 원아입니다!
-![easyme](/assets/readme/cartoon.png)   
+# FIND A GYM TO PRACTICE SELF-DEFENSE
+## (자기 방어 수련을 위한 체육관 데이터를 분석한 앱)
+
+![title](https://postfiles.pstatic.net/MjAyMjA2MDdfMTc4/MDAxNjU0NTc5NzMwMjAx.WmpKDRgjQEOR60STcVdyffOCaU4mFthQyOS4BTl9cg0g.BGy0yQP1mTGJ1wZSMpW6f0x_rtXnqnXbIkzpMLKoiFkg.JPEG.soej24/main_img_readme.jpg?type=w966)   
 
 ## ❓ EASYME.md가 뭐예요?   
 - **EASYME.md**는 **<u>개발자가 README.md를 좀 더 쉽게 작성할 수 있도록</u>** 하기 위해 만들었어요.   
