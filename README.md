@@ -207,6 +207,9 @@ st.plotly_chart(fig1)
 - 라디오 버튼으로 구분
 <br />
 
+## programming language / graphic tool
+- Python | Pandas | Visuil Studio Code | Photoshop
+
 ## Link   
 ### General link
 - [🚗 Visit EASYME.md's Repo](https://github.com/soej24/gym-rubber-stamp_search/blob/main/README.md)   
