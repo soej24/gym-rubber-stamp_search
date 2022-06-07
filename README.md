@@ -3,7 +3,7 @@
 
 ![title](https://postfiles.pstatic.net/MjAyMjA2MDdfMTc4/MDAxNjU0NTc5NzMwMjAx.WmpKDRgjQEOR60STcVdyffOCaU4mFthQyOS4BTl9cg0g.BGy0yQP1mTGJ1wZSMpW6f0x_rtXnqnXbIkzpMLKoiFkg.JPEG.soej24/main_img_readme.jpg?type=w966)   
 
-<br>
+
 ## 1. 체육관 검색
 - 지역, 시/군, 읍면동, 운동종목을 선택해서 가까운 체육관을 검색할수 있습니다.
 - 서울특별시, 인천광역시, 대전광역시, 광주광역시, 대구광역시, 부산광역시, 울산광역시, 세종특별자치시,
@@ -14,7 +14,7 @@
 - 검색되는 데이터가 없는경우 '검색된 데이터가 없습니다'로 예외처리
 - 목록 리스트와 지도를 확인할수 있습니다.
 
-<br>
+
 ##### 지역, 읍면동, 운동종목 셀렉트박스 부분 Code
 ```js
 addr_1 = ['서울특별시','인천광역시','대전광역시','광주광역시','대구광역시','부산광역시','울산광역시',\
@@ -24,7 +24,6 @@ column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥
 '트릭킹','멀티']
 ```
 
-<br>
 ##### 지역에 따라 시/군 셀렉트박스가 바뀌는 부분 Code
 ```js
 choice_list = st.selectbox('지역을 선택하세요!', addr_1, index=3)          
@@ -115,21 +114,21 @@ if choice_list == addr_1[16] :
 addr_3 = st.text_input('읍면동을 입력하세요! ex)구월동', max_chars=20)
 choice_list3 = st.selectbox('운동 종목을 선택하세요! (종목이 없는 체육관은 멀티로 분류)', column_list, index=0)
 ```
-### 사업장명에서 종목별로 데이터 가져오는 Code
+#### 사업장명에서 종목별로 데이터 가져오는 Code
 ```js
 df = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) &\
             (df['소재지전체주소'].str.contains(addr_3)) & (df['사업장명'].str.contains(choice_list3))]
 df = df.reset_index(drop=True)    
 ```
 
-### 데이터가 없는 경우 예외처리 Code
+#### 데이터가 없는 경우 예외처리 Code
 ```js
 if df.empty :
     st.markdown("***")                            
     st.text('검색된 데이터가 없습니다!!')
 ```
 
-### 사업장명에서 종목이 구분 안되는 부분 멀티로 예외처리 Code
+#### 사업장명에서 종목이 구분 안되는 부분 멀티로 예외처리 Code
 ```js
 df_mlt = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소재지전체주소'].str.contains(choice_list2)) & \
     (df['소재지전체주소'].str.contains(addr_3)) & (~df['사업장명'].str.contains('태권도') & \
@@ -139,7 +138,7 @@ df_mlt = df[ (df['소재지전체주소'].str.contains(choice_list)) & (df['소�
 df_mlt = df_mlt.reset_index(drop=True)
 st.table(df_mlt)
 ```
-### 지도 맵 보여주는 Code
+#### 지도 맵 보여주는 Code
 ```js
 if df.empty :                      
     st.text('검색된 데이터가 없습니다!!')
@@ -154,7 +153,7 @@ else :
 ###  3. 지역별 스포츠 동호회 현황(검도, 복싱, 유수, 주짓수, 태권도, 킥복싱, 카라테)
 - 각 지역구별 동호회 참여 회원수와 지역별 운동종목 회원수를 리스트와 차트로 보여줍니다.
 
-### 지역별 운동종목과 회원수 보여주는 Code
+#### 지역별 운동종목과 회원수 보여주는 Code
 ```js
 gym_use_total1 = pd.DataFrame(gym_use.groupby(['시도명','운동종목'])['회원수'].sum()).loc['서울특별시']
 st.subheader('서울특별시')
@@ -162,7 +161,7 @@ st.table(gym_use_total1)
 # 각 지역마다 구분코드 다름
 ```
 
-### 지역별 회원수 보기 시각화 Code
+#### 지역별 회원수 보기 시각화 Code
 ```js
 gym_use_1 = gym_use.loc[ gym_use['시도명'].str.contains('서울특별시'), ]
 gym_use_1.groupby('군구명')['회원수'].sum()
