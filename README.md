@@ -1,5 +1,3 @@
-# gym-rubber-stamp_search
-
 # FIND A GYM TO PRACTICE SELF-DEFENSE
 ## (자기 방어 수련을 위한 체육관 데이터를 분석한 앱)
 
