@@ -1,7 +1,7 @@
 # FIND A GYM TO PRACTICE SELF-DEFENSE
 ## (자기 방어 수련을 위한 체육관 데이터를 분석한 앱)
 
-![title](https://postfiles.pstatic.net/MjAyMjA2MDdfMTc4/MDAxNjU0NTc5NzMwMjAx.WmpKDRgjQEOR60STcVdyffOCaU4mFthQyOS4BTl9cg0g.BGy0yQP1mTGJ1wZSMpW6f0x_rtXnqnXbIkzpMLKoiFkg.JPEG.soej24/main_img_readme.jpg?type=w966)   
+![title](https://postfiles.pstatic.net/MjAyMjA2MDdfMTc4/MDAxNjU0NTc5NzMwMjAx.WmpKDRgjQEOR60STcVdyffOCaU4mFthQyOS4BTl9cg0g.BGy0yQP1mTGJ1wZSMpW6f0x_rtXnqnXbIkzpMLKoiFkg.JPEG.soej24/main_img_readme.jpg?type=w966){: width="100%" height="100%"}   
 <br/>
 
 ## 1. 체육관 검색
