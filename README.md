@@ -1,8 +1,8 @@
 # FIND A GYM TO PRACTICE SELF-DEFENSE
 ## (자기 방어 수련을 위한 체육관 데이터를 분석한 앱)
-
+<br /><br />
 ![title](./data/main_img.jpg)
-<br/><br />
+<br /><br />
 
 ## 1. 체육관 검색
 - 지역, 시/군, 읍면동, 운동종목을 선택해서 가까운 체육관을 검색할수 있습니다.
