@@ -208,7 +208,7 @@ st.plotly_chart(fig1)
 <br />
 
 ## programming language / graphic tool
-- Python | Pandas | Visuil Studio Code | Photoshop
+- [ Python ] [ Pandas ] [ Streamlit ] [ AWS ec2 ] [ Visuil Studio Code ] [ Photoshop ]
 
 ## Link   
 ### General link
