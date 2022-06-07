@@ -4,7 +4,7 @@
 ![title](https://postfiles.pstatic.net/MjAyMjA2MDdfMTc4/MDAxNjU0NTc5NzMwMjAx.WmpKDRgjQEOR60STcVdyffOCaU4mFthQyOS4BTl9cg0g.BGy0yQP1mTGJ1wZSMpW6f0x_rtXnqnXbIkzpMLKoiFkg.JPEG.soej24/main_img_readme.jpg?type=w966)   
 
 <br>
-## <style font-color:#666>1. 체육관 검색</style>
+## 1. 체육관 검색
 - 지역, 시/군, 읍면동, 운동종목을 선택해서 가까운 체육관을 검색할수 있습니다.
 - 서울특별시, 인천광역시, 대전광역시, 광주광역시, 대구광역시, 부산광역시, 울산광역시, 세종특별자치시,
   제주특별자치도, 강원도, 경기도, 경상남도, 경상북도, 전라남도, 전라북도, 충청남도, 충청북도 17개의
@@ -14,7 +14,8 @@
 - 검색되는 데이터가 없는경우 '검색된 데이터가 없습니다'로 예외처리
 - 목록 리스트와 지도를 확인할수 있습니다.
 
-#### 지역, 읍면동, 운동종목 셀렉트박스 부분 Code
+<br>
+##### 지역, 읍면동, 운동종목 셀렉트박스 부분 Code
 ```js
 addr_1 = ['서울특별시','인천광역시','대전광역시','광주광역시','대구광역시','부산광역시','울산광역시',\
 '세종특별자치시','제주특별자치도', '강원도', '경기도', '경상남도', '경상북도', '전라남도', '전라북도',\
@@ -23,7 +24,8 @@ column_list = ['태권도','합기도', '주짓수', '유도', '공수도', '킥
 '트릭킹','멀티']
 ```
 
-#### 지역에 따라 시/군 셀렉트박스가 바뀌는 부분 Code
+<br>
+##### 지역에 따라 시/군 셀렉트박스가 바뀌는 부분 Code
 ```js
 choice_list = st.selectbox('지역을 선택하세요!', addr_1, index=3)          
 if choice_list == addr_1[0] :
