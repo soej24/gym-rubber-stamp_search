@@ -209,8 +209,8 @@ st.plotly_chart(fig1)
 
 ## programming language / graphic tool
 - [ Python ] [ Pandas ] [ Streamlit ] [ AWS ec2 ] [ Visuil Studio Code ] [ Photoshop ]
+<br />
 
 ## Link   
-### General link
 - [🚗 Visit EASYME.md's Repo](https://github.com/soej24/gym-rubber-stamp_search/blob/main/README.md)   
 - [🙋‍♂️ Visit ONE:A's Github](https://github.com/soej24/gym-rubber-stamp_search)
