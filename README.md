@@ -216,7 +216,4 @@ st.plotly_chart(fig1)
 <br />
 
 ## URL
-(http://ec2-13-209-97-184.ap-northeast-2.compute.amazonaws.com:8501/)
-## Link   
-- [🚗 Visit EASYME.md's Repo](https://github.com/soej24/gym-rubber-stamp_search/blob/main/README.md)   
-- [🙋‍♂️ Visit ONE:A's Github](https://github.com/soej24/gym-rubber-stamp_search)
+- http://ec2-13-209-97-184.ap-northeast-2.compute.amazonaws.com:8501/
